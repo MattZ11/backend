@@ -6,10 +6,13 @@ package survey.backend.controller;
 //  tester le tout avec postman
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import survey.backend.dto.PoeDto;
 import survey.backend.dto.TraineeDto;
+import survey.backend.entities.Poe;
+import survey.backend.service.impl.PoeService;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -18,6 +21,14 @@ import java.util.Set;
 @RequestMapping("api/poe")
 public class PoeController {
 
+    @Autowired
+    private PoeService service;
+
+    @GetMapping
+    public Iterable<Poe> findAll() {
+        return this.service.findAll();
+    }
+}
    /* @GetMapping
     public Set<PoeDto> list();
 
@@ -55,7 +66,7 @@ public class PoeController {
     }*/
 
 
-    @GetMapping("find")
+   /* @GetMapping("find")
     //  crée une arborescence fille supplémentaire sur le serveur, et correspond à ce qui sera
     //  affiché à l'adresse correspondant sur la page web'
     public String find(
@@ -77,3 +88,6 @@ public class PoeController {
     }
 
 }
+
+
+    */

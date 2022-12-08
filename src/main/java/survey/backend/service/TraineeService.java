@@ -6,22 +6,56 @@ package survey.backend.service;
 //  Delete
 
 import survey.backend.dto.TraineeDto;
+import survey.backend.entities.Trainee;
 
 import java.util.Optional;
-import java.util.Set;
 
 public interface TraineeService {
 
-    Set<TraineeDto> findAll();
+    /**
+     * find all trainees
+     *
+     * @return all trainees
+     */
+    Iterable<Trainee> findAll();
 
-    Optional<TraineeDto> findById(int id);
+    /**
+     * find trainee with its id
+     * @param id
+     * @return optional with trainee if found else optional empty
+     */
+    Optional<Trainee> findById(int id);
 
-    Set<TraineeDto> search(String lastName,String firstName);
+    /**
+     * search trainees with criteria lastname, firstname ;
+     * one criteria can be null, not both
+     * @param lastName
+     * @param firstName
+     * @return trainee set with this lastname (if not null) and this firstname (if not null) ;
+     * empty set if no trainee found with these criteria or both criteria are null
+     */
+    Iterable<Trainee> search(String lastName, String firstName);
 
-    TraineeDto add(TraineeDto traineeDto);
+    /**
+     * add new trainee
+     * @param traineeDto
+     * @return trainee completed (id, default values)
+     */
 
 
-//    TraineeDto update(TraineeDto traineeDto);
+    Trainee add(TraineeDto traineeDto);
 
-    void delete(int id);
+    /**
+     * update trainee
+     * @param traineeDto
+     * @return trainee updated if found, else optional empty
+     */
+    Optional<Trainee> update(TraineeDto traineeDto);
+
+    /**
+     * delete trainee with its id
+     *
+     * @param id
+     */
+    boolean delete(int id);
 }
