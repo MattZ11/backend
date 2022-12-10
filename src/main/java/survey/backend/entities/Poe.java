@@ -17,7 +17,7 @@ public class Poe {
     @Column(name = "id")
     private Long id;
 
-    @Column(length = 150, nullable = false)
+    @Column(length = 200, nullable = false)
     private String title;
 
     @Column(name = "begin_date", nullable = false)
